@@ -13,10 +13,13 @@ main() {
     n1 = nw = nc = 0;
     while ((c = getchar()) != EOF) {
       ++nc;
+      putchar(c);
       if (c == '\n')
         ++n1;
-      if (c == ' ' || c == '\n' || c == '\t')
+      if (c == ' ' || c == '\n' || c == '\t') {
         state = OUT;
+        putchar('\n');
+      }
       else if (state == OUT) {
         state = IN;
         ++nw;
