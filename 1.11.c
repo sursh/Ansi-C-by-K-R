@@ -23,5 +23,6 @@ main() {
 
       }
     }
-    printf("\n%d newlines, %d words, and %d characters.\n", n1, nw, nc);
+    putchar('\n');
+    printf("%d newlines, %d words, and %d characters.\n", n1, nw, nc);
 }
