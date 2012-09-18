@@ -4,28 +4,23 @@
 
 main() {
 
-  #define IN  1 /* inside a word */
-  #define OUT 0 /* outside a word */
+  #define YES 1
+  #define NO  0
 
-    int c, n1, nw, nc, state;
+  int c, alreadySpace;
+  c = alreadySpace = NO;
 
-    state = OUT;
-    n1 = nw = nc = 0;
-    while ((c = getchar()) != EOF) {
-      ++nc;
+  while ((c = getchar()) != EOF) {
+    if (c != ' ' && c != '\t' && c != '\n') {
       putchar(c);
-      if (c == '\n')
-        ++n1;
-      if (c == ' ' || c == '\n' || c == '\t') {
-        state = OUT;
-        putchar('\n');
-      }
-      else if (state == OUT) {
-        state = IN;
-        ++nw;
-
-      }
+      alreadySpace = NO;
     }
-    putchar('\n');
-    printf("%d newlines, %d words, and %d characters.\n", n1, nw, nc);
+    else if (alreadySpace == NO){
+      putchar('\n');
+      alreadySpace = YES;
+    }
+    else
+      /* it's a second space, ignore it */
+      ;
+  }
 }
