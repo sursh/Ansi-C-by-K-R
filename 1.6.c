@@ -4,6 +4,8 @@
 
 /* why doesn't this print anything? */
 
+/* I'm starting to think that 0 and 1 are the codes for backspace or other special chars */
+
 main()
 {
   int c;
