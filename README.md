@@ -1,1 +1,1 @@
-Exercises from "The C Programming Language" by K&R
+Exercises from [The C Programming Language](http://www.amazon.com/C-Programming-Language-2nd-Edition/dp/0131103628/ref=sr_1_1?ie=UTF8&qid=1347941103&sr=8-1&keywords=the+c+programming+language) by K&R
