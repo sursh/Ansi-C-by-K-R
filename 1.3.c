@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+/* 1.3 print a heading above the table */
+
 main()
 {
   int fahr, celsius;
@@ -8,6 +10,8 @@ main()
   lower = 0;
   upper = 300;
   step = 20;
+
+  printf("\nTemperature conversionz\n\nF      C\n");
 
   fahr = lower;
   while (fahr <= upper) {
