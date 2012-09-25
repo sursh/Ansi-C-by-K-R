@@ -18,7 +18,9 @@ main() {
     if (c != '\t')
       putchar(c);
     else {
-      printf("\\t");
+      /* printf("\\t"); */
+      putchar('\\');
+      putchar('t');
     }
   }
 }
