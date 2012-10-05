@@ -8,7 +8,10 @@
       putchar("\\");
       putchar("t"); 
 
-      outputs XZ instead of the expected \t */
+      outputs XZ instead of the expected \t 
+
+      ah, figured it out. type of quotes really matter in C, and chars are very different from strings. 
+      */
 
 main() {
 
@@ -18,7 +21,9 @@ main() {
     if (c != '\t')
       putchar(c);
     else {
-      printf("\\t");
+      /* printf("\\t"); */
+      putchar('\\');
+      putchar('t');
     }
   }
 }
