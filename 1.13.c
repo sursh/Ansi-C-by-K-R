@@ -2,9 +2,7 @@
 
 /* 1-13 print a histogram of the lengths of words in input
    it's easy to draw histogram with the bars horizontal
-   a vertical orientation is more challenging. 
-
-   */
+   a vertical orientation is more challenging. */
 
 int main() {
 
@@ -12,11 +10,11 @@ int main() {
   #define YES 1
   #define NO  0
 
-  int c, i, j, letterTally, inASpace;
-  int letterCounts[MAX_WORD_LENGTH] = {0};
+  int c, i, letterTally, inASpace, printed0s;
+  int letterCounts[MAX_WORD_LENGTH + 1] = {0};
 
-  letterTally = i = 0;
-  c = inASpace = NO;
+  c = letterTally = i = printed0s = 0;
+  inASpace = NO;
 
   while ((c = getchar()) != EOF) {
     /* you are in a word */
@@ -35,14 +33,28 @@ int main() {
       ;
   }
   
-  /* print out the histogram */
-  for (i = 1; i < MAX_WORD_LENGTH; ++i){
-    printf("\n %3d ", i);
-    /* printf("%6d words with %d letters.\n", letterCounts[i], i); */
-    for (j = 0; j < letterCounts[i]; ++j){
-      printf("X");
+  /* histogram setup row */
+  for (i = 1; i <= MAX_WORD_LENGTH; ++i)
+    printf("%3d", i);
+
+  /* */
+  while(printed0s < MAX_WORD_LENGTH){
+    putchar('\n');
+    printed0s = 0;
+
+    /* print a row */
+    for (i = 1; i <= MAX_WORD_LENGTH; ++i){
+      if (letterCounts[i] != 0){
+        printf("  X");
+        --letterCounts[i];
+      }
+      else {
+        printf("   ");  
+        ++printed0s;
+      }
     }
   }
+
   putchar('\n');
   return 1;
 
