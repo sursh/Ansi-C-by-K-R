@@ -12,7 +12,7 @@ int main() {
   #define YES 1
   #define NO  0
 
-  int c, i, letterTally, inASpace;
+  int c, i, j, letterTally, inASpace;
   int letterCounts[MAX_WORD_LENGTH] = {0};
 
   letterTally = i = 0;
@@ -36,9 +36,14 @@ int main() {
   }
   
   /* print out the histogram */
-  for (i = 1; i < MAX_WORD_LENGTH; ++i)
-    printf("%6d words with %d letters.\n", letterCounts[i], i);
-
+  for (i = 1; i < MAX_WORD_LENGTH; ++i){
+    printf("\n %3d ", i);
+    /* printf("%6d words with %d letters.\n", letterCounts[i], i); */
+    for (j = 0; j < letterCounts[i]; ++j){
+      printf("X");
+    }
+  }
+  putchar('\n');
   return 1;
 
 }
