@@ -7,17 +7,17 @@ main() {
   #define YES 1
   #define NO  0
 
-  int c, alreadySpace;
-  c = alreadySpace = NO;
+  int c, inASpace;
+  c = inASpace = NO;
 
   while ((c = getchar()) != EOF) {
     if (c != ' ' && c != '\t' && c != '\n') {
       putchar(c);
-      alreadySpace = NO;
+      inASpace = NO;
     }
-    else if (alreadySpace == NO){
+    else if (inASpace == NO){
       putchar('\n');
-      alreadySpace = YES;
+      inASpace = YES;
     }
     else
       /* it's a second space, ignore it */
