@@ -12,33 +12,37 @@ int main() {
 
   int c, i, letterTally, inASpace, printed0s;
   int letterCounts[MAX_WORD_LENGTH + 1] = {0};
-
-  c = letterTally = i = printed0s = 0;
+  c = i = letterTally, printed0s = 0;
   inASpace = NO;
 
   while ((c = getchar()) != EOF) {
+
     /* you are in a word */
     if (c != ' ' && c != '\t' && c != '\n') {
       ++letterTally;
       inASpace = NO;
     }
-    /* hitting the first whitespace after a word */
+
+    /* hitting the first whitespace after a word - add tally to array and reset for next word */
     else if (inASpace == NO){
       inASpace = YES;
       ++letterCounts[letterTally];
       letterTally = 0;
     }
+
     else
       /* it's a second space, ignore it */
       ;
   }
   
   /* histogram setup row */
+  putchar('\n');
   for (i = 1; i <= MAX_WORD_LENGTH; ++i)
     printf("%3d", i);
 
-  /* */
+  /* print vertical histogram as long as there are no blank rows */
   while(printed0s < MAX_WORD_LENGTH){
+
     putchar('\n');
     printed0s = 0;
 
