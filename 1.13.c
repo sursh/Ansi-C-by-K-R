@@ -4,11 +4,11 @@
    it's easy to draw histogram with the bars horizontal
    a vertical orientation is more challenging. */
 
-int main() {
+#define MAX_WORD_LENGTH 20  
+#define YES 1
+#define NO 0
 
-  #define MAX_WORD_LENGTH 20  
-  #define YES 1
-  #define NO 0
+int main() {
 
   int c, i, letterTally, inASpace, printed0s;
   int letterCounts[MAX_WORD_LENGTH + 1] = {0};
