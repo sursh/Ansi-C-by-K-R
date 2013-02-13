@@ -6,46 +6,18 @@
    a vertical orientation is more challenging. */
 
 #define MAX_WORD_LENGTH 20  
-#define YES 1
-#define NO 0
 
-int main() {
+void printHistogram(int letterCounts){
 
-  int c, i, letterTally, inASpace;
-  int letterCounts[MAX_WORD_LENGTH + 1] = {0};
-  bool printedSomething; 
-  c = 0;
-  i = 0;
-  letterTally = 0;
-  inASpace = NO;
-  printedSomething = true;
+  int i;
+  bool printedSomething = true;
 
-  while ((c = getchar()) != EOF) {
-
-    /* you are in a word */
-    if (c != ' ' && c != '\t' && c != '\n') {
-      ++letterTally;
-      inASpace = NO;
-    }
-
-    /* hitting the first whitespace after a word - add tally to array and reset for next word */
-    else if (inASpace == NO){
-      inASpace = YES;
-      ++letterCounts[letterTally];
-      letterTally = 0;
-    }
-
-    else
-      /* it's a second space, ignore it */
-      ;
-  }
-  
   /* histogram setup row */
   putchar('\n');
   for (i = 1; i <= MAX_WORD_LENGTH; ++i)
     printf("%3d", i);
 
-  /* print vertical histogram as long as there are NO blank rows */
+  /* print vertical histogram for as long as you're printing something */
   while(printedSomething == true){
 
     printedSomething = false;
@@ -65,6 +37,39 @@ int main() {
   }
 
   putchar('\n');
+}
+
+int main() {
+
+  int c, letterTally;
+  int letterCounts[MAX_WORD_LENGTH + 1] = {0};
+  bool inASpace; 
+  c = 0;
+  letterTally = 0;
+  inASpace = false;
+
+  while ((c = getchar()) != EOF) {
+
+    /* you are in a word */
+    if (c != ' ' && c != '\t' && c != '\n' && c !/ '\r') {
+      ++letterTally;
+      inASpace = false;
+    }
+
+    /* hitting the first whitespace after a word - add tally to array and reset for next word */
+    else if (inASpace == false){
+      inASpace = true;
+      ++letterCounts[letterTally];
+      letterTally = 0;
+    }
+
+    else {
+      /* it's a second space, ignore it */
+    }
+  }
+  
+  printHistogram(letterCounts);
+
   return 0;
 
 }
