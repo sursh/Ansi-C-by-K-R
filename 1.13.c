@@ -4,8 +4,6 @@
    it's easy to draw histogram with the bars horizontal
    a vertical orientation is more challenging. */
 
-
-
 int main() {
 
   #define MAX_WORD_LENGTH 20  
@@ -36,7 +34,7 @@ int main() {
     }
 
     else
-      /* it's a second space, igNOre it */
+      /* it's a second space, ignore it */
       ;
   }
   
@@ -49,8 +47,7 @@ int main() {
   while(printed0s < MAX_WORD_LENGTH){
 
     putchar('\n');
-    printed0s = 0;
-
+    
     /* print a row */
     for (i = 1; i <= MAX_WORD_LENGTH; ++i){
       if (letterCounts[i] != 0){
