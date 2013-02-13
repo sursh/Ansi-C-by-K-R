@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 /* 1-13 print a histogram of the lengths of words in input
    it's easy to draw histogram with the bars horizontal
@@ -10,13 +11,14 @@
 
 int main() {
 
-  int c, i, letterTally, inASpace, printed0s;
+  int c, i, letterTally, inASpace;
   int letterCounts[MAX_WORD_LENGTH + 1] = {0};
+  bool printedSomething; 
   c = 0;
   i = 0;
   letterTally = 0;
-  printed0s = 0;
   inASpace = NO;
+  printedSomething = true;
 
   while ((c = getchar()) != EOF) {
 
@@ -44,8 +46,9 @@ int main() {
     printf("%3d", i);
 
   /* print vertical histogram as long as there are NO blank rows */
-  while(printed0s < MAX_WORD_LENGTH){
+  while(printedSomething == true){
 
+    printedSomething = false;
     putchar('\n');
     
     /* print a row */
@@ -53,10 +56,10 @@ int main() {
       if (letterCounts[i] != 0){
         printf("  X");
         --letterCounts[i];
+        printedSomething = true;
       }
       else {
         printf("   ");  
-        ++printed0s;
       }
     }
   }
