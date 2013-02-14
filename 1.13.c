@@ -7,14 +7,15 @@
 
 #define MAX_WORD_LENGTH 20  
 
-void printHistogram(int letterCounts){
+void printHistogram(int *letterCounts, int len)
+{
 
   int i;
   bool printedSomething = true;
 
   /* histogram setup row */
   putchar('\n');
-  for (i = 1; i <= MAX_WORD_LENGTH; ++i)
+  for (i = 1; i <= len; ++i)
     printf("%3d", i);
 
   /* print vertical histogram for as long as you're printing something */
@@ -24,7 +25,7 @@ void printHistogram(int letterCounts){
     putchar('\n');
     
     /* print a row */
-    for (i = 1; i <= MAX_WORD_LENGTH; ++i){
+    for (i = 1; i <= len; ++i){
       if (letterCounts[i] != 0){
         printf("  X");
         --letterCounts[i];
@@ -39,19 +40,19 @@ void printHistogram(int letterCounts){
   putchar('\n');
 }
 
-int main() {
+void countTheLetters(int *letterCounts, int len)
+{
 
   int c, letterTally;
-  int letterCounts[MAX_WORD_LENGTH + 1] = {0};
   bool inASpace; 
   c = 0;
   letterTally = 0;
   inASpace = false;
-
+  
   while ((c = getchar()) != EOF) {
 
     /* you are in a word */
-    if (c != ' ' && c != '\t' && c != '\n' && c !/ '\r') {
+    if (c != ' ' && c != '\t' && c != '\n' && c != '\r') {
       ++letterTally;
       inASpace = false;
     }
@@ -67,8 +68,15 @@ int main() {
       /* it's a second space, ignore it */
     }
   }
+}
+
+int main() {
+
+  int letterCounts[MAX_WORD_LENGTH + 1] = {0};
+
+  countTheLetters(letterCounts, MAX_WORD_LENGTH);
   
-  printHistogram(letterCounts);
+  printHistogram(letterCounts, MAX_WORD_LENGTH);
 
   return 0;
 
